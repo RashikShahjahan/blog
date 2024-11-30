@@ -42,11 +42,10 @@ async function generateMetaTagFiles() {
     <meta name="twitter:title" content="${post.title}">
     <meta name="twitter:description" content="${post.description || post.title} - Posted on ${formattedDate}">
     <meta name="twitter:image" content="${post.image || 'https://blog.rashik.sh/default-image.jpg'}">
-
-    <script type="module" src="/src/main.tsx"></script>
   </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="../src/main.tsx"></script>
   </body>
 </html>`
 
