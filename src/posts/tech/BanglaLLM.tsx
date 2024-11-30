@@ -1,9 +1,6 @@
 function BanglaLLM() {
   return (
     <article className="prose prose-lg max-w-none dark:prose-invert">
-      <h1 className="text-4xl font-bold mb-8 text-gray-900 dark:text-gray-100">
-        BanglaLLM: A Tool for Manually Verifying Synthetic Bengali Text Data
-      </h1>
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-800 dark:text-gray-200">
         The Problem

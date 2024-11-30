@@ -1,8 +1,6 @@
 function AiDrawing() {
   return (
-    <article className="prose prose-invert prose-gray mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-      <h1 className="text-4xl font-bold mb-8 text-black">Can an AI Learn to Draw?</h1>
-      
+    <article className="prose prose-invert prose-gray mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">      
       <p className="text-black leading-relaxed text-lg">
         Tools like Dalle3 let you create fantastic images like the following:
       </p>

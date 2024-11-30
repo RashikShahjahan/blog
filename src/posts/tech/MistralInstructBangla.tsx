@@ -1,10 +1,6 @@
 function MistralInstructBangla() {
   return (
     <article className="prose prose-lg  px-4 py-8 mx-auto max-w-4xl">
-      <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-        Mistral-Instruct-Bangla: Bridging the Gap in Bengali AI
-      </h1>
-
       <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">The Problem</h2>
       <p>
         In the arena of large language models like GPT-4, the performance disparity for less-represented 
