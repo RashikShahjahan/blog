@@ -38,9 +38,9 @@ export function PostView({ category, postId, setSelectedPostId }: PostViewProps)
         <meta property="og:description" content={`${post.title} - Read on Rashik's Blog`} />
         {/* If you have a cover image for posts, add: */}
         {/* <meta property="og:image" content={`${baseUrl}/path/to/image.jpg`} /> */}
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={post.title} />
-        <meta name="twitter:description" content={`${post.title} - Read on Rashik's Blog`} />
+        
+        <meta name="twitter:site" content="@RashikShahjahan" />
+        <meta name="twitter:creator" content="@RashikShahjahan" />
       </Helmet>
       <div className="flex flex-col min-h-screen relative">
         <div className="flex-grow px-12 sm:px-24">
