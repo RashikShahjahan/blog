@@ -1,7 +1,6 @@
 function TheGoal() {
   return (
     <article className="prose prose-lg max-w-none dark:prose-invert mx-auto px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">The Goal</h1>
 
       <div className="space-y-6 text-lg leading-relaxed">
         <p className="italic text-gray-700 dark:text-gray-300">It was so obvious.</p>

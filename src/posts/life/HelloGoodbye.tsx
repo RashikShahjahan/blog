@@ -1,7 +1,6 @@
 function HelloGoodbye() {
   return (
     <article className="prose prose-lg max-w-none px-4 md:px-8 py-12 mx-auto">
-      <h1 className="text-4xl md:text-5xl font-serif mb-8 text-center">Hello/Goodbye</h1>
 
       <div className="space-y-6 max-w-prose mx-auto">
         <p className="first-letter:text-4xl first-letter:font-serif first-letter:mr-1 first-letter:float-left">

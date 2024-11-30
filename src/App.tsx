@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import { PostList } from './components/PostList'
 import { PostView } from './components/PostView'
 
@@ -8,21 +8,45 @@ type Category = 'life' | 'tech'
 function App() {
   const [activeTab, setActiveTab] = useState<Category>('tech')
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null)
+  const location = useLocation()
+
+  // Sync states with URL parameters on mount and location changes
+  useEffect(() => {
+    const pathParts = location.pathname.split('/')
+    if (pathParts.length === 3) {
+      const category = pathParts[1] as Category
+      const postId = pathParts[2]
+      
+      if (category === 'tech' || category === 'life') {
+        setActiveTab(category)
+      }
+      setSelectedPostId(postId)
+    }
+  }, [location])
 
   return (
     <div className="max-w-4xl mx-auto p-8">
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl font-bold">Rashik's Blog</h1>
-        <div className="space-x-4">
+        <div>
+          <h1 className="text-4xl font-bold">Rashik's Blog</h1>
           <a 
             href="https://www.rashik.sh" 
-            target="_blank" 
+            className="text-gray-600 hover:text-black transition-colors"
+            target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 border-2 border-black hover:bg-black hover:text-white transition-colors duration-300"
           >
-            Portfolio Site
+            Visit my main site →
           </a>
         </div>
+        {selectedPostId && (
+          <Link 
+            to="/" 
+            className="px-4 py-2 border border-black rounded hover:bg-black hover:text-white transition-colors"
+            onClick={() => setSelectedPostId(null)}
+          >
+            Back to List
+          </Link>
+        )}
       </div>
 
       <Routes>

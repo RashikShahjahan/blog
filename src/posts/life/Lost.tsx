@@ -1,7 +1,6 @@
 function Lost() {
   return (
     <article className="prose prose-lg max-w-none flex flex-col items-center text-center">
-      <h1 className="mb-8 text-4xl font-bold">Lost</h1>
 
       <div className="space-y-6 max-w-2xl">
         <p className="italic text-gray-700">I don't remember when I got lost</p>

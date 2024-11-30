@@ -25,28 +25,35 @@ export function PostView({ category, postId, setSelectedPostId }: PostViewProps)
   const previousPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null
 
   return (
-    <div>
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-2">{post.title}</h2>
-        <span className="text-gray-600">
-          {new Date(post.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          })}
-        </span>
+    <div className="flex flex-col min-h-screen relative">
+      <div className="flex-grow">
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold mb-2">{post.title}</h2>
+          <span className="text-gray-600">
+            {new Date(post.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </span>
+        </div>
+        <post.component />
       </div>
-      <post.component />
-      <div className="mt-8 flex justify-between">
+      
+      <div className="fixed top-1/2 left-8 -translate-y-1/2 flex flex-col items-center">
         {previousPost ? (
           <button 
             onClick={() => {
               setSelectedPostId(previousPost.id)
               navigate(`/${category}/${previousPost.id}`)
             }}
-            className="px-4 py-2 border-2 border-black hover:bg-black hover:text-white transition-colors duration-300"
+            className="group flex flex-col items-center"
+            aria-label="Previous post"
           >
-            ← Previous: {previousPost.title}
+            <span className="text-6xl text-gray-800 opacity-50 group-hover:opacity-100 transition-opacity duration-300">←</span>
+            <span className="mt-2 text-sm text-gray-600 opacity-50 group-hover:opacity-100 transition-opacity duration-300 max-w-[150px] truncate">
+              {previousPost.title}
+            </span>
           </button>
         ) : (
           <button 
@@ -54,20 +61,31 @@ export function PostView({ category, postId, setSelectedPostId }: PostViewProps)
               setSelectedPostId(null)
               navigate('/')
             }}
-            className="px-4 py-2 border-2 border-black hover:bg-black hover:text-white transition-colors duration-300"
+            className="group flex flex-col items-center"
+            aria-label="Back to list"
           >
-            ← Back to list
+            <span className="text-6xl text-gray-800 opacity-50 group-hover:opacity-100 transition-opacity duration-300">←</span>
+            <span className="mt-2 text-sm text-gray-600 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+              Back to list
+            </span>
           </button>
         )}
+      </div>
+
+      <div className="fixed top-1/2 right-8 -translate-y-1/2 flex flex-col items-center">
         {nextPost ? (
           <button 
             onClick={() => {
               setSelectedPostId(nextPost.id)
               navigate(`/${category}/${nextPost.id}`)
             }}
-            className="px-4 py-2 border-2 border-black hover:bg-black hover:text-white transition-colors duration-300"
+            className="group flex flex-col items-center"
+            aria-label="Next post"
           >
-            Next: {nextPost.title} →
+            <span className="text-6xl text-gray-800 opacity-50 group-hover:opacity-100 transition-opacity duration-300">→</span>
+            <span className="mt-2 text-sm text-gray-600 opacity-50 group-hover:opacity-100 transition-opacity duration-300 max-w-[150px] truncate">
+              {nextPost.title}
+            </span>
           </button>
         ) : (
           <button 
@@ -75,9 +93,13 @@ export function PostView({ category, postId, setSelectedPostId }: PostViewProps)
               setSelectedPostId(null)
               navigate('/')
             }}
-            className="px-4 py-2 border-2 border-black hover:bg-black hover:text-white transition-colors duration-300"
+            className="group flex flex-col items-center"
+            aria-label="Back to list"
           >
-            Back to list →
+            <span className="text-6xl text-gray-800 opacity-50 group-hover:opacity-100 transition-opacity duration-300">→</span>
+            <span className="mt-2 text-sm text-gray-600 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+              Back to list
+            </span>
           </button>
         )}
       </div>
