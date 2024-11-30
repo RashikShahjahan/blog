@@ -21,7 +21,7 @@ export const posts = {
       date: '2023-12-22'
     },
     {
-      id: 'ai-drawing',
+      id: 'can-ai-learn-to-draw',
       title: 'Can an AI Learn to Draw?',
       component: AiDrawing,
       date: '2024-11-30'
