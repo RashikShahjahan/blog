@@ -43,7 +43,7 @@ export const posts: PostRegistry = {
       component: AiDrawing,
       date: '2024-11-30',
       description: 'I tried to teach an AI to draw',
-      image: 'artsy_fractal.png'
+      image: 'https://blog.rashik.sh/artsy_fractal.png'
     }
     // Add more tech posts...
   ],
