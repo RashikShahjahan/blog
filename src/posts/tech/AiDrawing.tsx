@@ -1,11 +1,11 @@
 function AiDrawing() {
   return (
     <article className="prose prose-invert prose-gray mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">      
-      <p className="text-black leading-relaxed text-lg">
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose">
         Tools like Dalle3 let you create fantastic images like the following:
       </p>
       
-      <blockquote className="border-l-4 border-gray-700 pl-4 my-6 italic text-black">
+      <blockquote className="border-l-4 border-gray-700 pl-4 my-6 italic text-black text-base sm:text-lg w-full sm:max-w-prose">
         Prompt: A glowing metropolis with flying cars, towering skyscrapers, and neon lights reflecting on wet streets.
       </blockquote>
       
@@ -17,42 +17,47 @@ function AiDrawing() {
         />
       </div>
 
-      <p className="text-black leading-relaxed mb-6">
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose mb-6">
         This is an art piece and a beautiful one. But I wouldn't call it drawing. Let me explain.
       </p>
 
-      <p className="text-black leading-relaxed mb-6">
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose mb-6">
         Back in grade school, I used to hate "art." My art classes always followed the same routine: 
         the teacher would describe exactly what to draw, and I'd try to copy it onto paper. 
         I disliked the process of drawing, and because of that, I decided I disliked art—or at least the visual arts.
       </p>
 
-      <p className="text-black leading-relaxed mb-6">
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose mb-6">
         The rise of tools like Stable Diffusion and Dalle gave people like me a second chance. 
         Now, I can just type a description, and the AI does the work. I don't need to draw to create art anymore.
       </p>
 
-      <p className="text-black leading-relaxed mb-6">
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose mb-6">
         Long before the current AI wave, 2D graphics libraries such as Cairo let programmers "draw" using code. 
         Drawing with code isn't the same as drawing by hand, but in both cases, you're following a concrete set of 
         actions to produce an image. The difference is, art created with code—or by hand—comes with a blueprint 
         that others can replicate, something AI image generators simply don't offer.
       </p>
 
-      <p className="text-black leading-relaxed mb-8">
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose mb-8">
         This realization led me to a more interesting question:{' '}
         <strong className="block mt-4 text-xl">
           Can an AI learn to write code using a drawing library?
         </strong>
       </p>
 
-      <p className="text-black leading-relaxed mb-8">
-        To answer this question, I created <a href="https://artsy.rashik.sh" target="_blank" rel="noopener noreferrer">Artsy</a> —a website
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose mb-8">
+        To answer this question, I created <a 
+          href="https://artsy.rashik.sh" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 font-medium"
+        >Artsy</a> —a website
         where users can enter a prompt to generate both an image and the code that created it. Unlike traditional 
         AI art generators, Artsy produces reproducible, modifiable code that anyone can understand and adapt.
       </p>
 
-      <p className="text-black leading-relaxed mb-6">
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose mb-6">
         In this case, the AI is given the description of a Python class that wraps a few core Cairo functions, 
         along with a prompt specific to the user's query. For example the prompt previously passed to Dalle3 gives this result:
       </p>
@@ -63,16 +68,16 @@ function AiDrawing() {
         className="my-4 rounded-lg"
       />
 
-      <p className="text-black leading-relaxed mb-6">
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose mb-6">
         Not exactly mind-blowing, but it also gives me the code to replicate or modify the image. 
         More importantly, it shows the reasoning the AI went through to create it.
       </p>
 
-      <p className="text-black leading-relaxed mb-6">Here's the code used to draw the image above:</p>
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose mb-6">Here's the code used to draw the image above:</p>
 
       <div className="my-12">
-        <pre className="bg-gray-900 p-6 rounded-xl overflow-x-auto shadow-xl border border-gray-700/30">
-          <code className="text-sm md:text-base font-mono text-gray-200 whitespace-pre leading-relaxed">
+        <pre className="bg-gray-900 p-2 sm:p-6 rounded-xl overflow-x-auto shadow-xl border border-gray-700/30">
+          <code className="text-xs sm:text-sm md:text-base font-mono text-gray-200 whitespace-pre leading-relaxed">
             {`from artcanvas import ArtCanvas
 import math
 import random
@@ -175,7 +180,7 @@ canvas.save()
         used for tasks like generating music or controlling a robot. The real question is this:
       </p>
 
-      <blockquote className="text-black text-lg border-l-4 border-gray-700 pl-6 py-2 my-8 italic">
+      <blockquote className="text-black text-lg sm:text-xl border-l-4 border-gray-700 pl-6 py-2 my-8 italic w-full sm:max-w-prose">
         Can an API fully encapsulate all operations required for a specific task, and can its usage guide 
         be concise enough to fit within a language model's context window?
       </blockquote>
