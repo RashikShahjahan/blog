@@ -4,6 +4,7 @@ import Lost from './life/Lost'
 import TheGoal from './life/TheGoal'
 import BanglaLLM from './tech/BanglaLLM'
 import MistralInstructBangla from './tech/MistralInstructBangla'
+import AiDrawing from './tech/AiDrawing'
 
 export const posts = {
   tech: [
@@ -18,6 +19,12 @@ export const posts = {
       title: 'BanglaLLM: A Tool for Manually Verifying Synthetic Bengali Text Data',
       component: BanglaLLM,
       date: '2023-12-22'
+    },
+    {
+      id: 'ai-drawing',
+      title: 'Can an AI Learn to Draw?',
+      component: AiDrawing,
+      date: '2024-11-30'
     }
     // Add more tech posts...
   ],

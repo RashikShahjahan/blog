@@ -1,7 +1,6 @@
 function FivePillars() {
   return (
     <article className="prose lg:prose-xl max-w-none">
-      <h1 className="text-4xl font-bold mb-8">5 Pillars of Me</h1>
 
       <div className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
