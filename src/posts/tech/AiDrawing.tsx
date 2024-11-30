@@ -142,6 +142,10 @@ canvas.save()
         </pre>
       </div>
 
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose mb-6">
+        There are also cases where Artsy is on par with or even superior to Dalle3. Consider this prompt:
+      </p>
+
       <p className="text-black italic my-6">
         <em>
           "A highly detailed, colorful fractal design with infinite complexity, featuring swirling patterns 
