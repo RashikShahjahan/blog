@@ -178,7 +178,7 @@ canvas.save()
         </div>
       </div>
 
-      <p className="text-black leading-relaxed">
+      <p className="text-black leading-relaxed text-base sm:text-lg w-full sm:max-w-prose mb-6">
         This answers my question about whether an AI can draw. But it also made me realize I was asking 
         the wrong question. The "text to code to X" framework can extend far beyond drawing—it could be 
         used for tasks like generating music or controlling a robot. The real question is this:
