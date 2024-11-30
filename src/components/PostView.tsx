@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { posts } from '../posts/registry'
+import { Helmet } from 'react-helmet-async'
 
 type PostViewProps = {
   category: 'life' | 'tech'
@@ -24,8 +25,29 @@ export function PostView({ category, postId, setSelectedPostId }: PostViewProps)
   const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null
   const previousPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null
 
+  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+
   return (
     <>
+      <Helmet>
+        <title>{post.title} | Rashik's Blog</title>
+        <meta name="description" content={`${post.title} - Posted on ${formattedDate}`} />
+        
+        {/* Facebook Meta Tags */}
+        <meta property="og:title" content={`${post.title} | Rashik's Blog`} />
+        <meta property="og:description" content={`${post.title} - Posted on ${formattedDate}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://blog.rashik.sh/${category}/${post.id}`} />
+        
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:title" content={`${post.title} | Rashik's Blog`} />
+        <meta name="twitter:description" content={`${post.title} - Posted on ${formattedDate}`} />
+      </Helmet>
+
       <div className="flex flex-col min-h-screen relative">
         <div className="flex-grow px-12 sm:px-24">
           <div className="mb-8 text-center">
