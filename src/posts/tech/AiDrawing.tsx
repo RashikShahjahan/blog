@@ -33,7 +33,7 @@ function AiDrawing() {
       </p>
 
       <p className="text-black leading-relaxed mb-6">
-        Long before the LLM revolution 2D graphics libraries such as Cairo let programmers "draw" using code. 
+        Long before the current AI wave, 2D graphics libraries such as Cairo let programmers "draw" using code. 
         Drawing with code isn't the same as drawing by hand, but in both cases, you're following a concrete set of 
         actions to produce an image. The difference is, art created with code—or by hand—comes with a blueprint 
         that others can replicate, something AI image generators simply don't offer.
@@ -176,8 +176,8 @@ canvas.save()
       </p>
 
       <blockquote className="text-black text-lg border-l-4 border-gray-700 pl-6 py-2 my-8 italic">
-        Is there an API that can codify everything needed to perform task X, and if so, is it small 
-        enough to fit its description within the context window of an LLM?
+        Can an API fully encapsulate all operations required for a specific task, and can its usage guide 
+        be concise enough to fit within a language model's context window?
       </blockquote>
     </article>
   );
