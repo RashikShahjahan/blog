@@ -21,20 +21,20 @@ async function generateMetaTagFiles() {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>${post.title} | Rashik's Blog</title>
+    <title>${post.title}</title>
     <meta name="description" content="${post.title} - Posted on ${formattedDate}">
 
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://blog.rashik.sh/${category}/${post.id}">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="${post.title} | Rashik's Blog">
+    <meta property="og:title" content="${post.title}">
     <meta property="og:description" content="${post.title} - Posted on ${formattedDate}">
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="blog.rashik.sh">
     <meta property="twitter:url" content="https://blog.rashik.sh/${category}/${post.id}">
-    <meta name="twitter:title" content="${post.title} | Rashik's Blog">
+    <meta name="twitter:title" content="${post.title}">
     <meta name="twitter:description" content="${post.title} - Posted on ${formattedDate}">
 
     <meta http-equiv="refresh" content="0;url=https://blog.rashik.sh/${category}/${post.id}">
