@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import { posts } from '../posts/registry'
-import { Helmet } from 'react-helmet-async'
 
 type PostViewProps = {
   category: 'life' | 'tech'
@@ -17,10 +16,7 @@ export function PostView({ category, postId, setSelectedPostId }: PostViewProps)
     return null
   }
 
-  const baseUrl = 'https://blog.rashik.sh'
-  const postUrl = `${baseUrl}/${category}/${post.id}`
-
-  const sortedPosts = posts[category].sort((a, b) => 
+    const sortedPosts = posts[category].sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
   )
 
@@ -30,18 +26,6 @@ export function PostView({ category, postId, setSelectedPostId }: PostViewProps)
 
   return (
     <>
-      <Helmet>
-        <title>{post.title} | Rashik's Blog</title>
-        <meta property="og:title" content={post.title} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={postUrl} />
-        <meta property="og:description" content={`${post.title} - Read on Rashik's Blog`} />
-        {/* If you have a cover image for posts, add: */}
-        {/* <meta property="og:image" content={`${baseUrl}/path/to/image.jpg`} /> */}
-        
-        <meta name="twitter:site" content="@RashikShahjahan" />
-        <meta name="twitter:creator" content="@RashikShahjahan" />
-      </Helmet>
       <div className="flex flex-col min-h-screen relative">
         <div className="flex-grow px-12 sm:px-24">
           <div className="mb-8 text-center">
