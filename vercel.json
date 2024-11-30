@@ -9,7 +9,7 @@
           "value": "(facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp)"
         }
       ],
-      "destination": "/meta/:category-:postId.html"
+      "destination": "/:category/:postId.html"
     },
     {
       "source": "/(.*)",
