@@ -41,7 +41,7 @@ async function generateMetaTagFiles() {
     <meta property="twitter:url" content="https://blog.rashik.sh/${category}/${post.id}">
     <meta name="twitter:title" content="${post.title}">
     <meta name="twitter:description" content="${post.description || post.title} - Posted on ${formattedDate}">
-    <meta name="twitter:image" content="${post.image || 'https://blog.rashik.sh/default-image.jpg'}">
+  <meta name="twitter:image" content="https://blog.rashik.sh/image.png">
   </head>
   <body>
     <div id="root"></div>
