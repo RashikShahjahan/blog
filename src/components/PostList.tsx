@@ -1,14 +1,15 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { posts } from '../posts/registry'
+import { Link } from 'react-router-dom'
 
 type PostListProps = {
-  activeTab: 'life' | 'tech'
-  setActiveTab: (tab: 'life' | 'tech') => void
   setSelectedPostId: (id: string | null) => void
 }
 
-export function PostList({ activeTab, setActiveTab, setSelectedPostId }: PostListProps) {
+export function PostList({ setSelectedPostId }: PostListProps) {
   const navigate = useNavigate()
+  const { category } = useParams<{ category: 'life' | 'tech' }>()
+  const activeTab = category as 'life' | 'tech'
   
   const sortedPosts = posts[activeTab].sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -17,22 +18,22 @@ export function PostList({ activeTab, setActiveTab, setSelectedPostId }: PostLis
   return (
     <>
       <div className="flex gap-4 mb-8">
-        <button 
-          onClick={() => setActiveTab('tech')}
+        <Link 
+          to="/tech"
           className={`px-4 py-2 border-2 border-black ${
             activeTab === 'tech' ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
           } transition-colors duration-300`}
         >
           Tech
-        </button>
-        <button 
-          onClick={() => setActiveTab('life')}
+        </Link>
+        <Link 
+          to="/life"
           className={`px-4 py-2 border-2 border-black ${
             activeTab === 'life' ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
           } transition-colors duration-300`}
         >
           Life
-        </button>
+        </Link>
       </div>
 
       <div className="space-y-4">

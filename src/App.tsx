@@ -1,28 +1,10 @@
-import { useState, useEffect } from 'react'
-import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import { useState } from 'react'
+import { Routes, Route, Link, Navigate } from 'react-router-dom'
 import { PostList } from './components/PostList'
 import { PostView } from './components/PostView'
 
-type Category = 'life' | 'tech'
-
 function App() {
-  const [activeTab, setActiveTab] = useState<Category>('tech')
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null)
-  const location = useLocation()
-
-  // Sync states with URL parameters on mount and location changes
-  useEffect(() => {
-    const pathParts = location.pathname.split('/')
-    if (pathParts.length === 3) {
-      const category = pathParts[1] as Category
-      const postId = pathParts[2]
-      
-      if (category === 'tech' || category === 'life') {
-        setActiveTab(category)
-      }
-      setSelectedPostId(postId)
-    }
-  }, [location])
 
   return (
     <div className="max-w-4xl mx-auto p-8">
@@ -53,9 +35,13 @@ function App() {
         <Route 
           path="/" 
           element={
+            <Navigate to="/tech" replace />
+          } 
+        />
+        <Route 
+          path="/:category" 
+          element={
             <PostList 
-              activeTab={activeTab} 
-              setActiveTab={setActiveTab}
               setSelectedPostId={setSelectedPostId}
             />
           } 
@@ -64,7 +50,6 @@ function App() {
           path="/:category/:postId" 
           element={
             <PostView 
-              category={activeTab}
               postId={selectedPostId}
               setSelectedPostId={setSelectedPostId}
             />

@@ -1,21 +1,22 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { posts } from '../posts/registry'
+
 type PostViewProps = {
-  category: 'life' | 'tech'
   postId: string | null
   setSelectedPostId: (id: string | null) => void
 }
 
-export function PostView({ category, postId, setSelectedPostId }: PostViewProps) {
+export function PostView({ postId, setSelectedPostId }: PostViewProps) {
   const navigate = useNavigate()
-  const post = posts[category].find(p => p.id === postId)
+  const { category } = useParams<{ category: 'life' | 'tech' }>()
+  const post = posts[category as 'life' | 'tech'].find(p => p.id === postId)
   
   if (!post) {
     navigate('/')
     return null
   }
 
-    const sortedPosts = posts[category].sort((a, b) => 
+  const sortedPosts = posts[category as 'life' | 'tech'].sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
   )
 
