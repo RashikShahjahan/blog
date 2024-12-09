@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Routes, Route, Link, Navigate } from 'react-router-dom'
 import { PostList } from './components/PostList'
 import { PostView } from './components/PostView'
+import NotFound  from './components/NotFound'
 
 function App() {
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null)
@@ -55,6 +56,7 @@ function App() {
             />
           } 
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   )
