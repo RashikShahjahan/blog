@@ -1,16 +1,23 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { posts } from '../posts/registry'
+import { useEffect } from 'react'
 
 type PostViewProps = {
   postId: string | null
   setSelectedPostId: (id: string | null) => void
 }
 
-export function PostView({ postId, setSelectedPostId }: PostViewProps) {
+export function PostView({ setSelectedPostId }: Omit<PostViewProps, 'postId'>) {
   const navigate = useNavigate()
-  const { category } = useParams<{ category: 'life' | 'tech' }>()
+  const { category, postId } = useParams<{ category: 'life' | 'tech', postId: string }>()
   const post = posts[category as 'life' | 'tech'].find(p => p.id === postId)
   
+  useEffect(() => {
+    if (postId) {
+      setSelectedPostId(postId)
+    }
+  }, [postId, setSelectedPostId])
+
   if (!post) {
     navigate('/')
     return null

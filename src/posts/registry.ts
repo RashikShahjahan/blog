@@ -5,6 +5,7 @@ import TheGoal from './life/TheGoal'
 import BanglaLLM from './tech/BanglaLLM'
 import MistralInstructBangla from './tech/MistralInstructBangla'
 import AiDrawing from './tech/AiDrawing'
+import WhatIWant from './life/WhatIWant'
 
 type Post = {
   id: string
@@ -45,15 +46,23 @@ export const posts: PostRegistry = {
       description: 'I tried to teach an AI to draw',
       image: 'https://blog.rashik.sh/artsy_fractal.png'
     }
-    // Add more tech posts...
   ],
   life: [
+    {
+      id: 'what-I-want',
+      title: 'What I Want',
+      component: WhatIWant,
+      date: '2024-12-16',
+      description: '',
+      image: ''
+    },
+
     {
       id: 'hello-goodbye',
       title: 'Hello/Goodbye',
       component: HelloGoodbye,
       date: '2024-08-28',
-      description: 'A reflection on the complexities of human relationships and the importance of saying goodbye',
+      description: 'Hello/Goodbye',
       image: ''
     },
     {
@@ -61,7 +70,7 @@ export const posts: PostRegistry = {
       title: 'Lost',
       component: Lost,
       date: '2024-06-26',
-      description: 'A story about the emotional journey of losing someone close',
+      description: 'Good poetry',
       image: ''
     },
     {
@@ -69,7 +78,7 @@ export const posts: PostRegistry = {
       title: 'The Goal',
       component: TheGoal,
       date: '2024-06-17',
-      description: 'A reflection on the importance of setting and achieving goals in life',
+      description: 'Okay poetry',
       image: ''
     },
     {
@@ -77,7 +86,7 @@ export const posts: PostRegistry = {
       title: '5 Pillars of Me',
       component: FivePillars,
       date: '2023-10-30',
-      description: 'An exploration of the five pillars of my life',
+      description: 'Thought dump structured by GPT',
       image: ''
     }
   ]

@@ -51,7 +51,6 @@ function App() {
           path="/:category/:postId" 
           element={
             <PostView 
-              postId={selectedPostId}
               setSelectedPostId={setSelectedPostId}
             />
           } 
