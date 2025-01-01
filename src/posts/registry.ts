@@ -6,6 +6,7 @@ import BanglaLLM from './tech/BanglaLLM'
 import MistralInstructBangla from './tech/MistralInstructBangla'
 import AiDrawing from './tech/AiDrawing'
 import WhatIWant from './life/WhatIWant'
+import ToRashik from './life/ToRashik'
 
 type Post = {
   id: string
@@ -48,6 +49,14 @@ export const posts: PostRegistry = {
     }
   ],
   life: [
+    {
+      id: 'to-rashik',
+      title: 'To Rashik',
+      component: ToRashik,
+      date: '2025-01-01',
+      description: 'A letter from a dear friend',
+      image: ''
+    },
     {
       id: 'what-I-want',
       title: 'What I Want',
