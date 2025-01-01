@@ -45,7 +45,9 @@ function ToRashik() {
           This means something to whom it means something.
         </p>
         
-        <p className="text-gray-600 text-sm mt-8">
+        <hr className="my-8 border-gray-300" />
+        
+        <p className="text-gray-600 text-sm">
           A dear friend wrote this to me during Covid, I found it with my old files and thought that I would put this on display.
         </p>
       </div>
