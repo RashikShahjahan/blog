@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="white" stroke="black" stroke-width="2"/>
+  
+  <!-- Stylized "R" -->
+  <path d="M35 25
+           h30
+           a15 15 0 0 1 0 30
+           h-10
+           l15 20
+           h-12
+           l-15 -20
+           h-8
+           v20
+           h-10
+           v-50
+           z
+           M45 35
+           v10
+           h15
+           a5 5 0 0 0 0 -10
+           h-15
+           z" 
+        fill="black"/>
+</svg>
