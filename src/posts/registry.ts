@@ -7,6 +7,7 @@ import MistralInstructBangla from './tech/MistralInstructBangla'
 import AiDrawing from './tech/AiDrawing'
 import WhatIWant from './life/WhatIWant'
 import ToRashik from './life/ToRashik'
+import SonicML from './tech/SonicML'
 
 type Post = {
   id: string
@@ -23,6 +24,14 @@ type PostRegistry = Record<PostCategory, Post[]>
 
 export const posts: PostRegistry = {
   tech: [
+    {
+      id: 'sonic-ml',
+      title: 'Sonic-ML: Train Tiny Language Models on any device',
+      component: SonicML,
+      date: '2024-01-04',
+      description: 'A simple command-line tool for training language models from scratch',
+      image: ''
+    },
     {
       id: 'mistral-instruct-bangla',
       title: 'Mistral-Instruct-Bangla: Bridging the Gap in Bengali AI',
@@ -57,6 +66,7 @@ export const posts: PostRegistry = {
       description: 'A letter from a dear friend',
       image: ''
     },
+
     {
       id: 'what-I-want',
       title: 'What I Want',
