@@ -28,7 +28,7 @@ export const posts: PostRegistry = {
       id: 'sonic-ml',
       title: 'Sonic-ML: Train Tiny Language Models on any device',
       component: SonicML,
-      date: '2024-01-04',
+      date: '2025-01-05',
       description: 'A simple command-line tool for training language models from scratch',
       image: ''
     },
