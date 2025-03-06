@@ -1,3 +1,160 @@
+/* Nous Research Simulators Theme */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* Set terminal-like styling for all default elements */
+  h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select, li {
+    @apply font-mono text-nous-black;
+    text-shadow: none;
+  }
+}
+
+@layer components {
+  /* Text color defaults */
+  .nous-text {
+    @apply text-nous-black;
+  }
+  
+  /* Alternating backgrounds */
+  .nous-bg-light {
+    @apply bg-white; /* White */
+  }
+  
+  .nous-bg-dark {
+    @apply bg-nous-black text-white; /* Black with white text */
+  }
+  
+  /* Force white text on dark backgrounds */
+  .bg-nous-black *, .bg-[#000000] *, .bg-[#1A1A1A] *, .nous-bg-dark * {
+    @apply text-white !important;
+  }
+  
+  /* Duotone effect for images */
+  .duotone-nous {
+    filter: grayscale(1);
+    mix-blend-mode: normal;
+  }
+  
+  /* Heading text style */
+  .terminal-heading {
+    @apply font-mono font-bold tracking-wider text-nous-black;
+    text-shadow: none;
+  }
+
+  /* Content text style */
+  .terminal-content {
+    @apply font-mono text-nous-black;
+    text-shadow: none;
+  }
+  
+  /* Card style */
+  .nous-card {
+    @apply bg-white border-2 border-black rounded-md shadow-lg text-nous-black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Black accent card */
+  .nous-card-dark {
+    @apply bg-black border-2 border-white rounded-md shadow-lg text-white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Glitch effect for text (minimal) */
+  .text-glitch {
+    position: relative;
+    @apply text-nous-black;
+  }
+  
+  .text-glitch::before,
+  .text-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .text-glitch::before {
+    left: 2px;
+    text-shadow: -1px 0 #FFFFFF;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+  }
+  
+  .text-glitch::after {
+    left: -2px;
+    text-shadow: -1px 0 #000000;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+    animation-delay: 0.3s;
+  }
+  
+  @keyframes glitch-anim {
+    0% {
+      clip: rect(98px, 9999px, 18px, 0);
+    }
+    5% {
+      clip: rect(34px, 9999px, 94px, 0);
+    }
+    10% {
+      clip: rect(3px, 9999px, 70px, 0);
+    }
+    15% {
+      clip: rect(14px, 9999px, 26px, 0);
+    }
+    20% {
+      clip: rect(53px, 9999px, 61px, 0);
+    }
+    25% {
+      clip: rect(17px, 9999px, 6px, 0);
+    }
+    30% {
+      clip: rect(81px, 9999px, 46px, 0);
+    }
+    35% {
+      clip: rect(73px, 9999px, 30px, 0);
+    }
+    40% {
+      clip: rect(57px, 9999px, 73px, 0);
+    }
+    45% {
+      clip: rect(31px, 9999px, 35px, 0);
+    }
+    50% {
+      clip: rect(70px, 9999px, 54px, 0);
+    }
+    55% {
+      clip: rect(41px, 9999px, 21px, 0);
+    }
+    60% {
+      clip: rect(60px, 9999px, 6px, 0);
+    }
+    65% {
+      clip: rect(89px, 9999px, 23px, 0);
+    }
+    70% {
+      clip: rect(93px, 9999px, 79px, 0);
+    }
+    75% {
+      clip: rect(38px, 9999px, 11px, 0);
+    }
+    80% {
+      clip: rect(41px, 9999px, 9px, 0);
+    }
+    85% {
+      clip: rect(84px, 9999px, 23px, 0);
+    }
+    90% {
+      clip: rect(61px, 9999px, 33px, 0);
+    }
+    95% {
+      clip: rect(78px, 9999px, 99px, 0);
+    }
+    100% {
+      clip: rect(40px, 9999px, 82px, 0);
+    }
+  }
+}

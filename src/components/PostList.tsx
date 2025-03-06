@@ -21,7 +21,7 @@ export function PostList({ setSelectedPostId }: PostListProps) {
         <Link 
           to="/tech"
           className={`px-4 py-2 border-2 border-black ${
-            activeTab === 'tech' ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
+            activeTab === 'tech' ? 'bg-black text-white' : 'hover:bg-nous-beige hover:text-black'
           } transition-colors duration-300`}
         >
           Tech
@@ -29,7 +29,7 @@ export function PostList({ setSelectedPostId }: PostListProps) {
         <Link 
           to="/life"
           className={`px-4 py-2 border-2 border-black ${
-            activeTab === 'life' ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
+            activeTab === 'life' ? 'bg-black text-white' : 'hover:bg-nous-beige hover:text-black'
           } transition-colors duration-300`}
         >
           Life
@@ -44,10 +44,10 @@ export function PostList({ setSelectedPostId }: PostListProps) {
               setSelectedPostId(post.id)
               navigate(`/${activeTab}/${post.id}`)
             }}
-            className="p-4 border-2 border-black hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
+            className={`p-4 border-2 border-black hover:bg-nous-beige hover:text-black transition-colors duration-300 cursor-pointer`}
           >
             <div className="flex justify-between items-center">
-              <span>{post.title}</span>
+              <span className="terminal-content">{post.title}</span>
               <span className="text-sm text-gray-600">
                 {new Date(post.date).toLocaleDateString('en-US', {
                   year: 'numeric',
