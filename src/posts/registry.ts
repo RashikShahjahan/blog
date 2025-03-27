@@ -8,6 +8,7 @@ import AiDrawing from './tech/AiDrawing'
 import WhatIWant from './life/WhatIWant'
 import ToRashik from './life/ToRashik'
 import SonicML from './tech/SonicML'
+import Onwards from './life/Onwards'
 
 type Post = {
   id: string
@@ -58,6 +59,13 @@ export const posts: PostRegistry = {
     }
   ],
   life: [
+    { 
+      id: 'onwards',
+      title: 'Onwards',
+      component: Onwards,
+      date: '2025-03-27',
+      description: 'Keep going forward',
+      image: ''},
     {
       id: 'to-rashik',
       title: 'To Rashik',
