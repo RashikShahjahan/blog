@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { posts } from '../posts/registry'
 import { useEffect } from 'react'
+import { useAnalyticsTracker } from '../utils/analytics'
 
 type PostViewProps = {
   postId: string | null
@@ -11,12 +12,25 @@ export function PostView({ setSelectedPostId }: Omit<PostViewProps, 'postId'>) {
   const navigate = useNavigate()
   const { category, postId } = useParams<{ category: 'life' | 'tech', postId: string }>()
   const post = posts[category as 'life' | 'tech'].find(p => p.id === postId)
+  const { trackEvent } = useAnalyticsTracker()
   
   useEffect(() => {
     if (postId) {
       setSelectedPostId(postId)
     }
   }, [postId, setSelectedPostId])
+
+  // Track post view on component mount
+  useEffect(() => {
+    if (post) {
+      trackEvent('post_view', {
+        post_id: post.id,
+        post_title: post.title,
+        category,
+        date_published: post.date
+      })
+    }
+  }, [post, category])
 
   if (!post) {
     navigate('/')
@@ -55,6 +69,12 @@ export function PostView({ setSelectedPostId }: Omit<PostViewProps, 'postId'>) {
           {previousPost && (
             <button 
               onClick={() => {
+                trackEvent('post_navigation', {
+                  action: 'previous',
+                  from_post_id: post.id,
+                  to_post_id: previousPost.id,
+                  category
+                })
                 setSelectedPostId(previousPost.id)
                 navigate(`/${category}/${previousPost.id}`)
               }}
@@ -73,6 +93,12 @@ export function PostView({ setSelectedPostId }: Omit<PostViewProps, 'postId'>) {
           {nextPost && (
             <button 
               onClick={() => {
+                trackEvent('post_navigation', {
+                  action: 'next',
+                  from_post_id: post.id,
+                  to_post_id: nextPost.id,
+                  category
+                })
                 setSelectedPostId(nextPost.id)
                 navigate(`/${category}/${nextPost.id}`)
               }}

@@ -1,16 +1,42 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, Link, Navigate } from 'react-router-dom'
+import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom'
 import { PostList } from './components/PostList'
 import { PostView } from './components/PostView'
 import NotFound  from './components/NotFound'
+import { useAnalyticsTracker } from './utils/analytics'
 
 function App() {
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null)
+  const location = useLocation()
+  const { trackEvent } = useAnalyticsTracker()
 
   // Set the theme to 'nous' for the entire app
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'nous');
   }, []);
+
+  // Track page navigation
+  useEffect(() => {
+    const path = location.pathname
+    const category = path.split('/')[1] || 'home'
+    
+    trackEvent('page_navigation', {
+      path,
+      category,
+      has_selected_post: !!selectedPostId
+    })
+  }, [location.pathname, selectedPostId])
+
+  // Enhanced setSelectedPostId with tracking
+  const handlePostSelection = (postId: string | null) => {
+    if (postId) {
+      trackEvent('post_selected', {
+        post_id: postId,
+        from_path: location.pathname
+      })
+    }
+    setSelectedPostId(postId)
+  }
 
   return (
     <div className="bg-white min-h-screen">
@@ -23,6 +49,10 @@ function App() {
               className="text-black hover:opacity-70 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('external_link_click', {
+                destination: 'main_site',
+                link_text: 'Visit my main site →'
+              })}
             >
               Visit my main site →
             </a>
@@ -31,7 +61,13 @@ function App() {
             <Link 
               to="/" 
               className="px-4 py-2 border border-black rounded hover:bg-black hover:text-white transition-colors"
-              onClick={() => setSelectedPostId(null)}
+              onClick={() => {
+                trackEvent('navigation_click', {
+                  action: 'return_to_list',
+                  from_post_id: selectedPostId
+                })
+                handlePostSelection(null)
+              }}
             >
               Back to List
             </Link>
@@ -49,7 +85,7 @@ function App() {
             path="/:category" 
             element={
               <PostList 
-                setSelectedPostId={setSelectedPostId}
+                setSelectedPostId={handlePostSelection}
               />
             } 
           />
@@ -57,7 +93,7 @@ function App() {
             path="/:category/:postId" 
             element={
               <PostView 
-                setSelectedPostId={setSelectedPostId}
+                setSelectedPostId={handlePostSelection}
               />
             } 
           />
