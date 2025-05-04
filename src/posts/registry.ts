@@ -9,6 +9,7 @@ import WhatIWant from './life/WhatIWant'
 import ToRashik from './life/ToRashik'
 import SonicML from './tech/SonicML'
 import Onwards from './life/Onwards'
+import BracketBot from './tech/BracketBot'
 
 type Post = {
   id: string
@@ -25,6 +26,14 @@ type PostRegistry = Record<PostCategory, Post[]>
 
 export const posts: PostRegistry = {
   tech: [
+    {
+      id: 'bracket-bot',
+      title: 'BracketBot: A Self-Programming Robot Using Voice Commands',
+      component: BracketBot,
+      date: '2025-02-11',
+      description: 'A robot that takes voice commands and writes python code for motor control',
+      image: ''
+    },
     {
       id: 'sonic-ml',
       title: 'Sonic-ML: Train Tiny Language Models on any device',
