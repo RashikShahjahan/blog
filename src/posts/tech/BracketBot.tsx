@@ -5,8 +5,8 @@ function BracketBot() {
         I made a self programming robot which takes in voice commands and writes python code for motor control based on those commands.
       </p>
 
-      <div className="mb-6">
-        <blockquote className="twitter-tweet">
+      <div className="mb-6 flex justify-center">
+        <blockquote className="twitter-tweet" data-dnt="true" data-theme="light">
           <p lang="en" dir="ltr">
             <a href="https://twitter.com/abhijain2706?ref_src=twsrc%5Etfw">@abhijain2706</a>{' '}
             <a href="https://twitter.com/onlychans1?ref_src=twsrc%5Etfw">@onlychans1</a> and<br />
