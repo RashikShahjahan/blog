@@ -1,15 +1,16 @@
 import './globals.css'
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 import { ClientAnalyticsWrapper } from '../components/ClientAnalyticsWrapper'
 
 export const metadata: Metadata = {
   title: "Rashik's Blog",
   description: "Personal blog by Rashik",
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    viewportFit: 'cover'
-  }
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover'
 }
 
 export default function RootLayout({
