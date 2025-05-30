@@ -1,4 +1,5 @@
 {
+  "distDir": "out",
   "rewrites": [
     {
       "source": "/:category/:postId",
