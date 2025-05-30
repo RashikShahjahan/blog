@@ -1,39 +1,42 @@
-import { useNavigate, useParams } from 'react-router-dom'
+'use client'
+
+import { useRouter, useParams } from 'next/navigation'
 import { posts } from '../posts/registry'
 import { useEffect } from 'react'
-import { useAnalyticsTracker } from '../utils/analytics'
+import { useAnalytics } from '../hooks/useAnalytics'
 
 type PostViewProps = {
-  postId: string | null
-  setSelectedPostId: (id: string | null) => void
+  setSelectedPostId?: (id: string | null) => void
 }
 
-export function PostView({ setSelectedPostId }: Omit<PostViewProps, 'postId'>) {
-  const navigate = useNavigate()
-  const { category, postId } = useParams<{ category: 'life' | 'tech', postId: string }>()
+export function PostView({ setSelectedPostId }: PostViewProps = {}) {
+  const router = useRouter()
+  const params = useParams()
+  const { trackEvent } = useAnalytics()
+  const category = params?.category as 'life' | 'tech'
+  const postId = params?.postId as string
   const post = posts[category as 'life' | 'tech'].find(p => p.id === postId)
-  const { trackEvent } = useAnalyticsTracker()
   
   useEffect(() => {
     if (postId) {
-      setSelectedPostId(postId)
+      setSelectedPostId?.(postId)
     }
   }, [postId, setSelectedPostId])
 
-  // Track post view on component mount
+  // Track post view when component mounts or post changes
   useEffect(() => {
     if (post) {
       trackEvent('post_view', {
         post_id: post.id,
         post_title: post.title,
-        category,
-        date_published: post.date
+        category: category,
+        post_date: post.date
       })
     }
-  }, [post, category])
+  }, [post, trackEvent, category])
 
   if (!post) {
-    navigate('/')
+    router.push('/')
     return null
   }
 
@@ -45,11 +48,44 @@ export function PostView({ setSelectedPostId }: Omit<PostViewProps, 'postId'>) {
   const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null
   const previousPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null
 
+  const handleNavigation = (targetPost: typeof post, direction: 'next' | 'previous') => {
+    trackEvent('post_navigation', {
+      from_post_id: post.id,
+      to_post_id: targetPost.id,
+      direction: direction,
+      category: category
+    })
+    
+    setSelectedPostId?.(targetPost.id)
+    router.push(`/${category}/${targetPost.id}`)
+  }
+
+  const handleBackToList = () => {
+    trackEvent('back_to_list', {
+      from_post_id: post.id,
+      category: category
+    })
+    
+    setSelectedPostId?.(null)
+    router.push(`/${category}`)
+  }
 
   return (
     <>
       <div className="flex flex-col min-h-screen relative">
-        <div className="flex-grow px-12 sm:px-24">
+        {/* Back to list button */}
+        <div className="fixed top-4 left-4 z-10">
+          <button 
+            onClick={handleBackToList}
+            className="group flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-black rounded-lg px-4 py-2 hover:bg-nous-beige hover:text-black transition-colors duration-300"
+            aria-label="Back to post list"
+          >
+            <span className="text-lg">←</span>
+            <span className="hidden sm:inline text-sm">Back to {category}</span>
+          </button>
+        </div>
+
+        <div className="flex-grow px-12 sm:px-24 pt-16">
           <div className="mb-8 text-center">
             <h2 className="text-3xl font-bold mb-2 terminal-heading">{post.title}</h2>
             <span className="text-gray-600">
@@ -68,16 +104,7 @@ export function PostView({ setSelectedPostId }: Omit<PostViewProps, 'postId'>) {
         <div className="fixed top-1/2 left-2 sm:left-8 -translate-y-1/2 flex flex-col items-center">
           {previousPost && (
             <button 
-              onClick={() => {
-                trackEvent('post_navigation', {
-                  action: 'previous',
-                  from_post_id: post.id,
-                  to_post_id: previousPost.id,
-                  category
-                })
-                setSelectedPostId(previousPost.id)
-                navigate(`/${category}/${previousPost.id}`)
-              }}
+              onClick={() => handleNavigation(previousPost, 'previous')}
               className="group flex flex-col items-center bg-white/80 backdrop-blur-sm border border-black rounded-full p-3"
               aria-label="Previous post"
             >
@@ -92,16 +119,7 @@ export function PostView({ setSelectedPostId }: Omit<PostViewProps, 'postId'>) {
         <div className="fixed top-1/2 right-2 sm:right-8 -translate-y-1/2 flex flex-col items-center">
           {nextPost && (
             <button 
-              onClick={() => {
-                trackEvent('post_navigation', {
-                  action: 'next',
-                  from_post_id: post.id,
-                  to_post_id: nextPost.id,
-                  category
-                })
-                setSelectedPostId(nextPost.id)
-                navigate(`/${category}/${nextPost.id}`)
-              }}
+              onClick={() => handleNavigation(nextPost, 'next')}
               className="group flex flex-col items-center bg-white/80 backdrop-blur-sm border border-black rounded-full p-3"
               aria-label="Next post"
             >

@@ -1,27 +1,19 @@
-import { useAnalytics } from 'rashik-analytics-provider';
-
 /**
- * Custom hook to easily track events throughout the application
- * 
- * @example
- * const { trackEvent } = useAnalyticsTracker();
- * 
- * // Track a button click
- * const handleClick = () => {
- *   trackEvent('button_click', { button_id: 'submit', action: 'form_submit' });
- * };
+ * Mock analytics tracker for development
+ * This can be replaced with actual analytics implementation later
  */
 export const useAnalyticsTracker = () => {
-  const { trackEvent } = useAnalytics();
-  
   return {
     /**
-     * Track a custom event
+     * Mock track event function
      * @param eventName - Name of the event to track
      * @param properties - Additional properties to include with the event
      */
     trackEvent: (eventName: string, properties?: Record<string, unknown>) => {
-      trackEvent(eventName, properties);
+      // Mock implementation - just log to console in development
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Analytics Event:', eventName, properties);
+      }
     }
   };
 }; 
