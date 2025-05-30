@@ -1,20 +1,4 @@
 {
-  "distDir": "out",
-  "rewrites": [
-    {
-      "source": "/:category/:postId",
-      "has": [
-        {
-          "type": "header",
-          "key": "User-Agent",
-          "value": "(facebookexternalhit|Twitterbot|LinkedInBot|WhatsApp)"
-        }
-      ],
-      "destination": "/:category/:postId.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "framework": "nextjs",
+  "buildCommand": "npm run build"
 } 
