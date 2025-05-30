@@ -62,10 +62,13 @@ export function PostView() {
     <>
       <div className="flex flex-col min-h-screen relative">
         {/* Back to list button */}
-        <div className="fixed top-4 left-4 z-10">
+        <div className="fixed z-10" style={{ 
+          top: 'max(1.5rem, env(safe-area-inset-top, 0px) + 0.5rem)', 
+          left: 'max(1.5rem, env(safe-area-inset-left, 0px) + 0.5rem)' 
+        }}>
           <button 
             onClick={handleBackToList}
-            className="group flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-black rounded-lg px-4 py-2 hover:bg-nous-beige hover:text-black transition-colors duration-300"
+            className="group flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-black rounded-lg px-3 py-2 sm:px-4 sm:py-2 hover:bg-nous-beige hover:text-black transition-colors duration-300 shadow-lg touch-manipulation"
             aria-label="Back to post list"
           >
             <span className="text-lg">←</span>
@@ -89,11 +92,13 @@ export function PostView() {
           </div>
         </div>
         
-        <div className="fixed top-1/2 left-2 sm:left-8 -translate-y-1/2 flex flex-col items-center">
+        <div className="fixed top-1/2 -translate-y-1/2 flex flex-col items-center z-10" style={{
+          left: 'max(0.5rem, env(safe-area-inset-left, 0px) + 0.25rem)'
+        }}>
           {previousPost && (
             <button 
               onClick={() => handleNavigation(previousPost, 'previous')}
-              className="group flex flex-col items-center bg-white/80 backdrop-blur-sm border border-black rounded-full p-3"
+              className="group flex flex-col items-center bg-white/90 backdrop-blur-sm border border-black rounded-full p-3 touch-manipulation"
               aria-label="Previous post"
             >
               <span className="text-2xl sm:text-xl text-black opacity-50 group-hover:opacity-100 transition-opacity duration-300">◂</span>
@@ -104,11 +109,13 @@ export function PostView() {
           )}
         </div>
 
-        <div className="fixed top-1/2 right-2 sm:right-8 -translate-y-1/2 flex flex-col items-center">
+        <div className="fixed top-1/2 -translate-y-1/2 flex flex-col items-center z-10" style={{
+          right: 'max(0.5rem, env(safe-area-inset-right, 0px) + 0.25rem)'
+        }}>
           {nextPost && (
             <button 
               onClick={() => handleNavigation(nextPost, 'next')}
-              className="group flex flex-col items-center bg-white/80 backdrop-blur-sm border border-black rounded-full p-3"
+              className="group flex flex-col items-center bg-white/90 backdrop-blur-sm border border-black rounded-full p-3 touch-manipulation"
               aria-label="Next post"
             >
               <span className="text-2xl sm:text-xl text-black opacity-50 group-hover:opacity-100 transition-opacity duration-300">▸</span>

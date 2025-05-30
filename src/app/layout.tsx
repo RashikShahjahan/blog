@@ -5,6 +5,11 @@ import { ClientAnalyticsWrapper } from '../components/ClientAnalyticsWrapper'
 export const metadata: Metadata = {
   title: "Rashik's Blog",
   description: "Personal blog by Rashik",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    viewportFit: 'cover'
+  }
 }
 
 export default function RootLayout({
