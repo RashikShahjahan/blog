@@ -1,6 +1,6 @@
 import './globals.css'
 import { Metadata } from 'next'
-import { AnalyticsProvider } from '../components/AnalyticsProvider'
+import { ClientAnalyticsWrapper } from '../components/ClientAnalyticsWrapper'
 
 export const metadata: Metadata = {
   title: "Rashik's Blog",
@@ -15,9 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="nous">
       <body>
-        <AnalyticsProvider serviceName="blog">
+        <ClientAnalyticsWrapper serviceName="blog">
           {children}
-        </AnalyticsProvider>
+        </ClientAnalyticsWrapper>
       </body>
     </html>
   )

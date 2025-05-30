@@ -1,5 +1,6 @@
-import { PostList } from '../../components/PostList'
-import BlogApp from '../../components/BlogApp'
+import { ServerPostList } from '../../components/ServerPostList'
+import ServerBlogApp from '../../components/ServerBlogApp'
+import { Metadata } from 'next'
 
 export async function generateStaticParams() {
   return [
@@ -8,13 +9,21 @@ export async function generateStaticParams() {
   ]
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
+  const { category } = await params
+  
+  return {
+    title: `${category.charAt(0).toUpperCase() + category.slice(1)} - Rashik's Blog`,
+    description: `Browse ${category} posts on Rashik's blog`,
+  }
+}
+
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
-  // We await params to satisfy Next.js requirements but don't need the values
-  await params
+  const { category } = await params
   
   return (
-    <BlogApp>
-      <PostList />
-    </BlogApp>
+    <ServerBlogApp>
+      <ServerPostList category={category as 'life' | 'tech'} />
+    </ServerBlogApp>
   )
 } 

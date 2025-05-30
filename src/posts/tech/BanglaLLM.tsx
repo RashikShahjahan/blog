@@ -35,10 +35,10 @@ function BanglaLLM() {
       <h3>Data Synthesis</h3>
       <div className="flex justify-center my-8 rounded-lg overflow-hidden shadow-lg">
         <Image 
-          src="../_datasynth.drawio.png" 
+          src="/_datasynth.drawio.png" 
           alt="Data Synthesis Process"
-          width={800}
-          height={600}
+          width={100}
+          height={50}
           className="max-w-full h-auto"
         />
       </div>
@@ -55,10 +55,10 @@ function BanglaLLM() {
       <h3>Draft Editor</h3>
       <div className="flex justify-center my-8 rounded-lg overflow-hidden shadow-lg">
         <Image 
-          src="../_draft_editor.drawio.png" 
+          src="/_draft_editor.drawio.png" 
           alt="Draft Editor Process"
-          width={800}
-          height={600}
+          width={100}
+          height={50}
           className="max-w-full h-auto"
         />
       </div>
