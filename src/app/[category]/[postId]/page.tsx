@@ -39,10 +39,46 @@ export async function generateMetadata({
       description: 'The requested post could not be found.',
     }
   }
+
+  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+
+  const description = `${post.description || post.title} - Posted on ${formattedDate}`
+  const url = `https://blog.rashik.sh/${category}/${postId}`
+  const imageUrl = post.image || 'https://blog.rashik.sh/image.png'
   
   return {
     title: `${post.title} - Rashik's Blog`,
-    description: `Read "${post.title}" on Rashik's blog. Published on ${new Date(post.date).toLocaleDateString()}.`,
+    description,
+    openGraph: {
+      title: post.title,
+      description,
+      url,
+      type: 'article',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      siteName: "Rashik's Blog",
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description,
+      images: [imageUrl],
+      site: '@rashik_sh',
+      creator: '@rashik_sh',
+    },
+    alternates: {
+      canonical: url,
+    },
   }
 }
 
