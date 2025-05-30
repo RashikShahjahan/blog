@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage - Highest priority -->
+  <url>
+    <loc>https://blog.rashik.sh/</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Category pages -->
+  <url>
+    <loc>https://blog.rashik.sh/tech</loc>
+    <lastmod>2025-02-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rashik.sh/life</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Tech posts -->
+  <url>
+    <loc>https://blog.rashik.sh/tech/bracket-bot</loc>
+    <lastmod>2025-02-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rashik.sh/tech/sonic-ml</loc>
+    <lastmod>2025-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rashik.sh/tech/mistral-instruct-bangla</loc>
+    <lastmod>2024-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rashik.sh/tech/banglallm</loc>
+    <lastmod>2023-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rashik.sh/tech/can-ai-learn-to-draw</loc>
+    <lastmod>2024-11-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Life posts -->
+  <url>
+    <loc>https://blog.rashik.sh/life/onwards</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rashik.sh/life/to-rashik</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.1</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rashik.sh/life/what-I-want</loc>
+    <lastmod>2024-12-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rashik.sh/life/hello-goodbye</loc>
+    <lastmod>2024-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.1</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rashik.sh/life/lost</loc>
+    <lastmod>2024-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rashik.sh/life/the-goal</loc>
+    <lastmod>2024-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.rashik.sh/life/5-pillars</loc>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset> 
