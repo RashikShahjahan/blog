@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 export interface EventBase {
@@ -49,7 +49,7 @@ export const AnalyticsProvider: React.FC<AnalyticsProviderProps> = ({
   autoTrackPageViews = true,
   onError
 }) => {
-  const trackEvent = (eventType: string, properties: Partial<EventBase> | Record<string, unknown> = {}) => {
+  const trackEvent = useCallback((eventType: string, properties: Partial<EventBase> | Record<string, unknown> = {}) => {
     try {
       // Get current path from window.location since we're not using React Router
       const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
@@ -73,7 +73,7 @@ export const AnalyticsProvider: React.FC<AnalyticsProviderProps> = ({
       // Sort properties into known fields vs metadata
       Object.entries(properties).forEach(([key, value]) => {
         if (knownProps.includes(key)) {
-          knownProperties[key as keyof EventBase] = value as any;
+          (knownProperties as Record<string, unknown>)[key] = value;
         } else {
           metadataProperties[key] = value;
         }
@@ -103,7 +103,7 @@ export const AnalyticsProvider: React.FC<AnalyticsProviderProps> = ({
         onError(error);
       }
     }
-  };
+  }, [serviceName, endpoint, onError]);
 
   // Simple device detection
   const detectDevice = (): string => {
@@ -123,7 +123,7 @@ export const AnalyticsProvider: React.FC<AnalyticsProviderProps> = ({
     if (autoTrackPageViews) {
       trackEvent('page_view');
     }
-  }, [autoTrackPageViews]);
+  }, [autoTrackPageViews, trackEvent]);
 
   // Listen for browser navigation changes
   useEffect(() => {
@@ -138,7 +138,7 @@ export const AnalyticsProvider: React.FC<AnalyticsProviderProps> = ({
         window.removeEventListener('popstate', handlePopState);
       };
     }
-  }, [autoTrackPageViews]);
+  }, [autoTrackPageViews, trackEvent]);
 
   return (
     <AnalyticsContext.Provider value={{ trackEvent }}>

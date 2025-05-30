@@ -29,7 +29,8 @@ export default async function PostPage({
 }: { 
   params: Promise<{ category: string; postId: string }> 
 }) {
-  const { category, postId } = await params
+  // We await params to satisfy Next.js requirements but don't need the values
+  await params
   
   return (
     <BlogApp>

@@ -9,7 +9,8 @@ export async function generateStaticParams() {
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
-  const { category } = await params
+  // We await params to satisfy Next.js requirements but don't need the values
+  await params
   
   return (
     <BlogApp>

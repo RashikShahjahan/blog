@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 function BanglaLLM() {
   return (
     <article className="prose prose-lg max-w-none dark:prose-invert">
@@ -32,9 +34,11 @@ function BanglaLLM() {
 
       <h3>Data Synthesis</h3>
       <div className="flex justify-center my-8 rounded-lg overflow-hidden shadow-lg">
-        <img 
+        <Image 
           src="../_datasynth.drawio.png" 
           alt="Data Synthesis Process"
+          width={800}
+          height={600}
           className="max-w-full h-auto"
         />
       </div>
@@ -50,9 +54,11 @@ function BanglaLLM() {
 
       <h3>Draft Editor</h3>
       <div className="flex justify-center my-8 rounded-lg overflow-hidden shadow-lg">
-        <img 
+        <Image 
           src="../_draft_editor.drawio.png" 
           alt="Draft Editor Process"
+          width={800}
+          height={600}
           className="max-w-full h-auto"
         />
       </div>

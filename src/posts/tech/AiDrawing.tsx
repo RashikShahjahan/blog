@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 function AiDrawing() {
   return (
     <article className="prose prose-invert prose-gray mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">      
@@ -10,9 +12,11 @@ function AiDrawing() {
       </blockquote>
       
       <div className="my-8">
-        <img 
+        <Image 
           src="/dalle_initial.png" 
           alt="Dalle3 generated cityscape" 
+          width={800}
+          height={600}
           className="w-full rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
         />
       </div>
@@ -62,9 +66,11 @@ function AiDrawing() {
         along with a prompt specific to the user's query. For example the prompt previously passed to Dalle3 gives this result:
       </p>
 
-      <img 
+      <Image 
         src="/artsy_initial.png" 
         alt="Artsy generated cityscape" 
+        width={800}
+        height={600}
         className="my-4 rounded-lg"
       />
 
@@ -160,18 +166,22 @@ canvas.save()
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <h3 className="text-black font-medium text-center">Dalle3's response:</h3>
-            <img 
+            <Image 
               src="/dalle_fractal.png" 
               alt="Dalle3 generated fractal" 
+              width={400}
+              height={400}
               className="w-full rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
             />
           </div>
 
           <div className="space-y-4">
             <h3 className="text-black font-medium text-center">Artsy's response:</h3>
-            <img 
+            <Image 
               src="/artsy_fractal.png" 
               alt="Artsy generated fractal" 
+              width={400}
+              height={400}
               className="w-full rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
             />
           </div>

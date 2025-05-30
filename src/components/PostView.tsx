@@ -5,11 +5,7 @@ import { posts } from '../posts/registry'
 import { useEffect } from 'react'
 import { useAnalytics } from '../hooks/useAnalytics'
 
-type PostViewProps = {
-  setSelectedPostId?: (id: string | null) => void
-}
-
-export function PostView({ setSelectedPostId }: PostViewProps = {}) {
+export function PostView() {
   const router = useRouter()
   const params = useParams()
   const { trackEvent } = useAnalytics()
@@ -17,12 +13,6 @@ export function PostView({ setSelectedPostId }: PostViewProps = {}) {
   const postId = params?.postId as string
   const post = posts[category as 'life' | 'tech'].find(p => p.id === postId)
   
-  useEffect(() => {
-    if (postId) {
-      setSelectedPostId?.(postId)
-    }
-  }, [postId, setSelectedPostId])
-
   // Track post view when component mounts or post changes
   useEffect(() => {
     if (post) {
@@ -56,7 +46,6 @@ export function PostView({ setSelectedPostId }: PostViewProps = {}) {
       category: category
     })
     
-    setSelectedPostId?.(targetPost.id)
     router.push(`/${category}/${targetPost.id}`)
   }
 
@@ -66,7 +55,6 @@ export function PostView({ setSelectedPostId }: PostViewProps = {}) {
       category: category
     })
     
-    setSelectedPostId?.(null)
     router.push(`/${category}`)
   }
 
